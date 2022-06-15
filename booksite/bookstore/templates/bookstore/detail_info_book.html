@@ -1,0 +1,20 @@
+{% extends 'bookstore/base.html' %}
+{% block content %}
+{% if book_info != None %}
+<h2> Detail info about {{ book_info.title }} </h2>
+
+<div>
+Price: {{ book_info.price }}$
+</div>
+<div>
+Pages: {{ book_info.pages }}
+</div>
+<div>
+Released year: {{ book_info.released_year }}
+</div>
+Author is <a href="{% url 'detail_author' author_info.id %}"> {{ author_info.first_name }} {{ author_info.last_name }}</a>
+{% else %}
+Ups! Nothing found!
+{% endif %}
+
+{% endblock%}

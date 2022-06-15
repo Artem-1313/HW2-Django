@@ -1,0 +1,25 @@
+{% extends 'bookstore/base.html' %}
+{% block content %}
+{% if author_detail != None %}
+It's a famous author
+<div>Name is <b>{{author_detail.first_name}}</b></div>
+<div>Surname is </b>{{author_detail.last_name}}</b></div>
+<div>Age is <b>{{author_detail.age}}</b></div>
+
+{% else %}
+Ups! Nothing found!
+{% endif %}
+<br>
+Author wrote such books:
+{% for book in books %}
+    {% if book.id in books_id %}
+      <div>
+          <b><a href="{% url 'description_of_book' book.id %}">{{ book.title }}</a></b>
+      </div>
+      <div>
+             <a id="detail_info" href="{% url 'detail_info_book' book.id %}">Detail info!</a>
+      </div>
+<br>
+    {% endif %}
+{% endfor %}
+{% endblock%}

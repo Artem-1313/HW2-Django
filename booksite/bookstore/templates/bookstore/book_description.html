@@ -1,0 +1,10 @@
+{% extends 'bookstore/base.html' %}
+{% block content %}
+<h2> BOOK DESCRIPTION</h2>
+
+{% if book_description != None %}
+{{ book_description }}
+{% else %}
+Ups! Nothing found!
+{% endif %}
+{% endblock%}

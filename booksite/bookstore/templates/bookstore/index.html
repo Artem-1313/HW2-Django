@@ -1,0 +1,23 @@
+{% extends 'bookstore/base.html' %}
+{% block content %}
+<h2> List of books</h2>
+{% for book in books %}
+<div>
+    <b><a href="{% url 'description_of_book' book.id %}">{{ book.title }}</a></b>
+    {% for author in authors %}
+        {% if author.id == book.author_id %}
+        <div>
+            by {{ author.first_name}}
+            {{ author.last_name}}
+
+        </div>
+        <div>
+             <a id="detail_info" href="{% url 'detail_info_book' book.id %}">Detail info!</a>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+<br>
+
+{% endfor %}
+{% endblock%}
